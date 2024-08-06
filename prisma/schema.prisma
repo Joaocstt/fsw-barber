@@ -13,46 +13,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id String @id @default(uuid())
-  email String 
-  name String
-  bookings Booking[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(uuid())
+  email     String
+  name      String
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-model BarberShop {
-  id String @id @default(uuid())
-  name String
-  address String
-  phones String[]
+model Barbershop {
+  id          String              @id @default(uuid())
+  name        String
+  address     String
+  phones      String[]
   description String
-  imageUrl String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  services BarbershopService[]
+  imageUrl    String
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  services    BarbershopService[]
 }
 
 model BarbershopService {
-  id String @id @default(uuid())
-  name String
-  description String
-  imageUrl String
-  price Decimal @db.Decimal(10,2)
-  barbershopId String 
-  barbershop BarberShop @relation(fields: [barbershopId], references: [id])
-  bookings Booking[]
+  id           String     @id @default(uuid())
+  name         String
+  description  String
+  imageUrl     String
+  price        Decimal    @db.Decimal(10, 2)
+  barbershopId String
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  bookings     Booking[]
 }
 
 model Booking {
-  id String @id @default(uuid())
-  userid String
-  user User @relation(fields: [userid], references: [id])
+  id        String            @id @default(uuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
   serviceId String
-  service BarbershopService @relation(fields: [serviceId], references: [id])
-  date DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  service   BarbershopService @relation(fields: [serviceId], references: [id])
+  date      DateTime
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
 }
