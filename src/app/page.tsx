@@ -33,6 +33,30 @@ export default async function Home() {
           </Button>
         </div>
 
+        { /* BUSCA RÁPIDA */}
+
+        <div className="flex gap-3 mt-6 overflow-x-scroll  [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+              <Image src="/tesoura.svg" width={16} height={16} alt="icone de bigode" />
+              Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+              <Image src="/bigode.svg" width={16} height={16} alt="icone de barba/bigode" />
+              Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+              <Image src="/acabamento.svg" width={16} height={16} alt="icone de barba/bigode" />
+              Acabamento
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+              <Image src="/tesoura.svg" width={16} height={16} alt="icone de bigode" />
+              Pezinho
+          </Button>
+        </div>
+
         <div className="relative w-full h-[150px] mt-6 ">
           <Image
             src="/banner-01.png"
@@ -86,9 +110,19 @@ export default async function Home() {
                 <BarbershopItem key={barbershop.id} barbershop={barbershop} />
               ))
             }
-        </div>
-
+        </div>   
       </div>
+
+      <footer>
+      <Card>
+            <CardContent className="px-5 py-6">
+              <p className="text-sm text-gray-400">
+                2024 Copyright <span className="font-bold">FSW Barber</span> FSW barber
+              </p>
+            </CardContent>
+          </Card>
+      </footer>
     </div>
+
   );
 }
