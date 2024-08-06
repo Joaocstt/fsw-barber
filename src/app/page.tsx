@@ -1,4 +1,4 @@
-import {SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
@@ -7,10 +7,14 @@ import { Card, CardContent } from "./_components/ui/card";
 import { Badge } from "./_components/ui/badge";
 import { Avatar } from "./_components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { db } from "./_lib/prisma";
+import BarbershopItem from "./_components/barbershop-item";
 
-export default function Home() {
+export default async function Home() {
+  const barbershops = await db.barbershop.findMany({})
+  console.log({barbershops})
   return (
-  <div>
+    <div>
       { /* Header */}
       <Header />
       <div className="p-5">
@@ -25,29 +29,28 @@ export default function Home() {
         </div>
 
         <div className="relative w-full h-[150px] mt-6 ">
-          <Image 
-            src="/banner-01.png" 
-            fill 
-            className="object-cover rounded-xl" 
+          <Image
+            src="/banner-01.png"
+            fill
+            className="object-cover rounded-xl"
             alt="Banner" />
         </div>
 
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">Agendamentos</h2>
         <Card className="mt-6">
           <CardContent className="flex justify-between p-0">
-              {/* ESQUERDA */}
+            {/* ESQUERDA */}
             <div className="flex flex-col gap-2 py-5 pl-5">
               <Badge className="w-fit">Confirmado</Badge>
               <h3 className="font-bold">Corte de Cabelo</h3>
-              
+
               <div className="flex items-center gap-2">
                 <Avatar className="h-6  w-6">
-                   <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png" />
+                  <AvatarImage src="https://utfs.io/f/45331760-899c-4b4b-910e-e00babb6ed81-16q.png" />
                 </Avatar>
                 <p className="text-sm">Barbearia FSW</p>
               </div>
             </div>
-
-
             <div className="flex flex-col items-center justify-center px-5 border-l-2 border-solid">
               <p className="text-sm">Agosto</p>
               <p className="text-2xl">05</p>
@@ -56,7 +59,19 @@ export default function Home() {
           </CardContent>
         </Card>
 
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Recomendados
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+            {
+              barbershops.map(barbershop => (
+                <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+              ))
+            }
+        </div>
+
+
       </div>
-  </div>  
+    </div>
   );
 }
