@@ -85,15 +85,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <footer>
-        <Card>
-          <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">
-              2024 Copyright <span className="font-bold">FSW Barber</span> FSW barber
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
+
     </div>
 
   );
