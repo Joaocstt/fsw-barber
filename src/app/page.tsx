@@ -57,6 +57,7 @@ export default async function Home() {
         </div>
 
           {/* AGENDAMENTOS */}
+          
           <BookingItem />
 
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
