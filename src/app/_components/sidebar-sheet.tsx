@@ -65,9 +65,11 @@ const SidebarSheet = () => {
                         </Link>
                     </Button>
                 </SheetClose>
-                <Button className="gap-2 justify-start" variant="ghost">
+                <Button className="gap-2 justify-start" variant="ghost" asChild>
+                   <Link href="/bookings">
                     <CalendarIcon size={18} />
                     Agendamento
+                   </Link>
                 </Button>
 
             </div>

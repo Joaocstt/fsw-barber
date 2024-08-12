@@ -14,9 +14,20 @@ const Header = () => {
           <Image src="/fsw_logo.png" height={18} width={120} alt="logotipo" />
         </Link>
 
+           {/* Menu Desktop */}
+           <nav className="hidden sm:flex sm:items-center space-x-6">
+            <Link href="/" className="text-white text-sm hover:text-gray-600">
+            Agendamentos
+            </Link>
+            <Button size="sm">
+              Icon Perfil
+            </Button>
+        </nav>
+
+
         <Sheet>
           <SheetTrigger asChild>
-            <Button size="icon" variant="outline">
+            <Button size="icon" variant="outline" className="sm:hidden" >
               <MenuIcon />
             </Button>
           </SheetTrigger>
