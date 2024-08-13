@@ -51,7 +51,6 @@ export default async function Home() {
       <Header />
       <div className="p-5">
         <h2 className="text-xl font-bold">Olá, {session?.user ? session.user.name : "bem vindo!"}</h2>
-        <p>Segunda-feira, 05 de agosto</p>
         <p>
           <span className="capitalize">
           {format(new Date(), "EEEE, dd", {locale: ptBR} )}
